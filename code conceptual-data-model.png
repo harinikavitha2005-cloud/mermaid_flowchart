@@ -1,0 +1,52 @@
+flowchart LR
+
+    %% SOURCE SYSTEMS
+    S1[Source Systems]
+    S2[Applications]
+    S3[External Data]
+
+    %% STAGING LAYER
+    SP[Staging - Primary]
+    SS[Staging - Secondary]
+
+    %% OPERATIONAL DATA STORE
+    ODS[ODS<br/>Operational Data Store]
+
+    %% DATA WAREHOUSE
+    DWH[Data Warehouse]
+
+    %% DATA MARTS
+    DM1[Sales Data Mart]
+    DM2[Finance Data Mart]
+    DM3[Customer Data Mart]
+    DM4[Operations Data Mart]
+
+    %% CONSUMER LAYER
+    BI[BI & Reporting]
+    DS[Data Science / ML]
+    APP[Business Applications]
+    USER[Business Users]
+
+    %% DATA FLOW
+    S1 --> SP
+    S2 --> SP
+    S3 --> SP
+
+    SP --> SS
+    SS --> ODS
+
+    ODS --> DWH
+
+    DWH --> DM1
+    DWH --> DM2
+    DWH --> DM3
+    DWH --> DM4
+
+    DM1 --> BI
+    DM2 --> BI
+    DM3 --> DS
+    DM4 --> APP
+
+    BI --> USER
+    DS --> USER
+    APP --> USER
